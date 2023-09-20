@@ -1,17 +1,15 @@
-
-
 document.addEventListener("DOMContentLoaded", () => {
-	let hours = document.querySelector(".jsCountdownHours");
-	let minutes = document.querySelector(".jsCountdownMinutes");
-	let seconds = document.querySelector(".jsCountdownSeconds");
+	const hours = document.querySelector(".jsCountdownHours");
+	const minutes = document.querySelector(".jsCountdownMinutes");
+	const seconds = document.querySelector(".jsCountdownSeconds");
 	if (hours) {
-		let timerInterval = setInterval(function () {
-			let hoursValue = hours.textContent;
-			let minutesValue = minutes.textContent;
-			let secondsValue = seconds.textContent;
-			if (secondsValue == 0) {
-				if (minutesValue == 0) {
-					if (hoursValue == 0) {
+		let timerInterval = setInterval(() => {
+			let hoursValue = Number(hours.textContent);
+			let minutesValue = Number(minutes.textContent);
+			let secondsValue = Number(seconds.textContent);
+			if (secondsValue === 0) {
+				if (minutesValue === 0) {
+					if (hoursValue === 0) {
 						hoursValue = 24;
 					}
 					hoursValue--;
@@ -23,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				minutes.textContent = minutesValue;
 				seconds.textContent = secondsValue;
 			}
-			if (seconds != 0) {
+			if (seconds !== 0) {
 				secondsValue--;
 				seconds.textContent = secondsValue;
 			}
@@ -34,20 +32,19 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 });
 
-
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 	const images = document.querySelectorAll(".preview__img");
 	const buttons = document.querySelectorAll(".preview__button");
 	if (images.length) {
 		for (let i = 0; i < buttons.length; i++) {
-			buttons[i].addEventListener("click", function () {
+			buttons[i].addEventListener("click", () => {
 				for (let j = 0; j < buttons.length; j++) {
 					buttons[j].classList.remove("active");
 				}
 				buttons[i].classList.add("active");
 				for (let j = 0; j < images.length; j++) {
 					if (
-						buttons[i].getAttribute("data-content") ==
+						buttons[i].getAttribute("data-content") ===
 						images[j].getAttribute("data-content")
 					) {
 						images[j].classList.add("active");
